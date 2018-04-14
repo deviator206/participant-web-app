@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<style type="text/css">
+.mainCamera {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: rgba(255, 255, 255, 0.9);
+	text-align: center;
+	font-weight: 300;
+	font-size: 28px;
+	z-index: 10000;
+}
+</style>
+<script type="text/javascript" src="js/recording-helper.js"></script>
+
+</head>
+<body>
+	<div class="form-horizontal" id="info_wrapper">
+		<h2>Participant Information</h2>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="email">Email/
+				Name:</label>
+			<div class="col-sm-10">
+				<input type="email" class="form-control" id="email"
+					placeholder="Enter Email / Name">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="pwd">Phone Number:</label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" id="pwd"
+					placeholder="Enter password">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default" onClick="navigateTo()">Proceed</button>
+			</div>
+		</div>
+	</div>
+	<div class="container mainCamera" id="cam_wrapper"
+		style="display: none;">hello buddy</div>
+	<script type="text/javascript">
+		function navigateTo() {
+			document.getElementById("info_wrapper").style.display = "none";
+			document.getElementById("cam_wrapper").style.display = "block";
+			proceedToRecord();
+		}
+
+		function proceedToRecord() {
+			// ID of the mediafile you wish this participant to see
+			var mediaFileID = "dce248c83b20406a8d801c6126776738";
+			
+			var currentPage = window.location.href
+			// Page to show after the recording is complete
+			var callBackUrl = currentPage +"sucess.html";
+
+			// Page to show (or redirect you're participant to) when a recording failed
+			var failedCallBackUrl = currentPage +"fail.html";
+			console.log(failedCallBackUrl);
+
+			// replace by call to your own javascript function to retreive a unique ID per participant
+			var participantID = "dev_v" + Math.floor((Math.random() * 100) + 1);
+			;
+
+			// create RecordingHelper object 
+			var helper = new RecordingHelper(participantID, mediaFileID,
+					callBackUrl, failedCallBackUrl,"100%","100%");
+
+			// Optionally, set a JavaScript function to call when the recording is completed  
+			var that = this;
+			helper.onrecordingfinished = function() {
+				//todo:
+			};
+
+			// and when the recording failed 
+			helper.onrecordingfailed = function() {
+				//that.yourFunction();
+			};
+			document.getElementById("cam_wrapper").appendChild(helper.iframe);
+
+		}
+	</script>
+
+
+
+</body>
+</html>

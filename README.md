@@ -9,6 +9,7 @@ Basic Implementation with 3rd Party Integration
 - final POM
 
 	<!--
+	
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
