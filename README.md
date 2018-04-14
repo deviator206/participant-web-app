@@ -7,21 +7,21 @@ Basic Implementation with 3rd Party Integration
 - add dependencis [https://dzone.com/articles/build-rest-web-service-using-spring]
 - add to git
 - final POM
-	
+
+	<!--
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
       <springframework.version>4.3.0.RELEASE</springframework.version>
         <jackson.library>2.7.5</jackson.library>
-        
   </properties>
 
   <dependencies>
   
   
 	
-	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+
 <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-core</artifactId>
@@ -29,7 +29,7 @@ Basic Implementation with 3rd Party Integration
 </dependency>
 	
 	
-	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+	
 <dependency>
     <groupId>org.slf4j</groupId>
     <artifactId>slf4j-api</artifactId>
@@ -74,4 +74,4 @@ Basic Implementation with 3rd Party Integration
   
   
   </dependencies>
-
+-->
