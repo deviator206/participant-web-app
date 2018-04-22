@@ -8,8 +8,8 @@
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost/neuro_db</property>
 		<property name="hibernate.connection.username">root</property>
-		<!-- <property name="hibernate.connection.password">root</property>-->
-		<property name="hibernate.connection.password">teamerp</property> 
+		<property name="hibernate.connection.password">root</property>
+		<!-- <property name="hibernate.connection.password">teamerp</property> -->
 		<!-- Connection Pool Size -->
 		<property name="hibernate.connection.pool_size">100</property>
 		

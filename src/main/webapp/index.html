@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
- <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
     <meta name="keywords" content="brainwaves,video analytics,affectlab neuroscience,product research, advertising,Cognitive Insights, motion capture, head mounted display, head tracking, neuroscience">
     <meta name="description" content="Neuro&DeviatorLabs  enables you to conduct an emotion analysis of a user's reaction to products and marketing campaigns & measure behavioral parameters">
     <meta property="og:tile" content="Neuro&DeviatorLabs  | Emotion Recognition Software and Analysis">
@@ -11,70 +11,157 @@
     <meta property="og:description" content="Neuro&DeviatorLabs  enables you to conduct an emotion analysis of a user's reaction to products and marketing campaigns & measure behavioral parameters">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="Neuro&DeviatorLabs">
-
     <meta name="pageTitle" content="Neuro&DeviatorLabs | Emotion Recognition Software and Analysis">
     <meta name="countryName" content="in">
     <meta name="languageName" content="en">
     <meta name="searchable" content="y">
-    
-
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<style type="text/css">
-.mainCamera {
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	background: rgba(255, 255, 255, 0.9);
-	text-align: center;
-	font-weight: 300;
-	font-size: 28px;
-	z-index: 10000;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+
 <script type="text/javascript" src="js/recording-helper.js"></script>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+
+<!-- jQuery library -->
+<script src="lib/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 
 </head>
-<body>
-	<div class="form-horizontal" id="info_wrapper">
+<body ng-app="deviatorLabs">
+	<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container">
+			<a class="navbar-brand" href="#">Neuro-InsideOut Labs</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<h2> Reviewers Application</h2>
+				
+			</div>
+		</div>
+	</nav> -->
+	<div class="wrapper" ng-controller="participantController" data-ng-init="init()">
+	<div class="lead">{{errorMessage}}</div>
+		<div class="basic_loader" id="loader_wrapper" >
+			<div class="basic_loader_inner_text lead">Loading... Please wait</div>
+			<div class="basic_loader_inner"></div>
+
+		</div>
+	<div id="info_wrapper" class = "mainWrapper form-horizontal" >
 		<h2>Participant Information</h2>
+
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="email">Email/
-				Name:</label>
+			<label class="control-label col-sm-2" for="name">Name*:</label>
 			<div class="col-sm-10">
-				<input type="email" class="form-control" id="email"
-					placeholder="Enter Email / Name">
+				<input type="text"  required class="form-control" ng-model="name"
+					placeholder="Enter Name">
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="email">
+				Email*:</label>
+			<div class="col-sm-10">
+				<input type="email" required class="form-control" ng-model="email"
+					placeholder="Enter Email">
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="pwd">Phone Number:</label>
+			<label class="control-label col-sm-2" for="phone">Phone Number:</label>
 			<div class="col-sm-10">
-				<input type="password" class="form-control" id="pwd"
-					placeholder="Enter password">
+				<input type="text" class="form-control" ng-model="phoneNumber"
+					placeholder="Enter PhoneNumber">
 			</div>
 		</div>
+		
+			(* are mandatory to fill before proceeding)
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default" onClick="navigateTo()">Proceed</button>
+				<button type="submit" class="btn btn-default" ng-click="submitParticipantInfo()">Proceed</button>
 			</div>
 		</div>
-	</div>
-	<div class="container mainCamera" id="cam_wrapper"
-		style="display: none;">hello buddy</div>
-	<script type="text/javascript">
-		function navigateTo() {
-			document.getElementById("info_wrapper").style.display = "none";
-			document.getElementById("cam_wrapper").style.display = "block";
-			proceedToRecord();
-		}
 
+	
+	</div>
+
+	<div class="mainCamera" id="cam_wrapper" style="display:none;"></div>
+	</div>
+	<div class="footer">
+		<div class="container footer-container">
+			<p>Designed by: Neuro-InsideOut </p>
+		</div>
+	</div>
+	<!--<script type="text/javascript">
+		
+		var mediaFileID = "d1450735bcd742d9b6068faa371083c7";
+		
+		
+		function getUpdatedURL(){
+			var currentPage = window.location.href;
+			currentPage = currentPage.replace("index.html","");
+			return currentPage;
+		}
+	
+		window.onload = function(){
+			/*if (window.localStorage.getItem("viewed_"+mediaFileID)) {
+				var currentPage = getUpdatedURL();
+				window.location.href = currentPage+"seen.html";
+			}*/
+
+			alert("HELLo")
+			document.getElementById("loader_wrapper").style.display = "block";
+			document.getElementById("cam_wrapper").style.display = "none";
+			document.getElementById("info_wrapper").style.display = "none";
+			
+
+			//navigateTo();
+		}
+		function navigateTo() {
+			//document.getElementById("info_wrapper").style.display = "none";
+			//document.getElementById("msg_wrapper").style.display = "block";
+			document.getElementById("cam_wrapper").style.display = "none";
+			//sendInformation();
+			
+			//document.getElementById("info_wrapper").style.display = "none";
+			//document.getElementById("msg_wrapper").style.display = "none";
+			document.getElementById("cam_wrapper").style.display = "block";
+	    	proceedToRecord();
+		}
+		
+		function sendInformation(){
+			var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			    	//document.getElementById("info_wrapper").style.display = "none";
+					//document.getElementById("msg_wrapper").style.display = "none";
+					document.getElementById("cam_wrapper").style.display = "block";
+			    	proceedToRecord();
+			    }
+			  };
+			  var currentPage = getUpdatedURL();
+			  xhttp.open("POST", currentPage+"rest/participant/add", true);
+			  var jsObj = {
+					  "name":document.getElementById("email"),
+					  "phoneNumber":document.getElementById("pwd")
+			  }
+			  xhttp.setRequestHeader('Content-Type', 'application/json');
+			  xhttp.send(JSON.stringify(jsObj));
+		}
+		
+		
 		function proceedToRecord() {
 			// ID of the mediafile you wish this participant to see
 			//var mediaFileID = "dce248c83b20406a8d801c6126776738";
-			var mediaFileID = "d1450735bcd742d9b6068faa371083c7";
 			
-			var currentPage = window.location.href
+			
+			var currentPage = getUpdatedURL();
 			// Page to show after the recording is complete
 			var callBackUrl = currentPage +"sucess.html";
 
@@ -88,22 +175,24 @@
 
 			// create RecordingHelper object 
 			var helper = new RecordingHelper(participantID, mediaFileID,
-					callBackUrl, failedCallBackUrl,"100%","100%");
+					callBackUrl, failedCallBackUrl,"1140px","660px");
 
 			// Optionally, set a JavaScript function to call when the recording is completed  
 			var that = this;
 			helper.onrecordingfinished = function() {
-				//todo:
+				window.localStorage.setItem("viewed_"+mediaFileID, true);
+				
 			};
 
 			// and when the recording failed 
 			helper.onrecordingfailed = function() {
-				//that.yourFunction();
+				var currentPage = getUpdatedURL();
+				window.location.href = currentPage+"fail.html";
 			};
 			document.getElementById("cam_wrapper").appendChild(helper.iframe);
 
 		}
-	</script>
+	</script> -->
 
 
 

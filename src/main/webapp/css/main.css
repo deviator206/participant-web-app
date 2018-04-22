@@ -1,0 +1,83 @@
+html, body{ height:100%; margin:0; }
+/* Trick */
+body{ 
+    display:flex; 
+    flex-direction:column; 
+  }
+  
+  footer{
+  }
+.mainCamera {
+	width: 100%;
+    /* height: 100%; */
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    bottom: 165px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    font-weight: 300;
+    font-size: 28px;
+    z-index: 10000;
+}
+
+
+.navbar {
+    padding: 25px;
+}
+.wrapper {
+    height: calc(100% - 50px);
+    position: relative;
+}
+.mainWrapper {
+    margin:0 auto;
+}
+
+.mainWrapper h2 {
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.footer {
+    margin-top:auto; 
+    background-color: #007bff;
+    width: 100%;
+    padding: .5rem 1rem;
+    margin-top: 30px;
+    position: relative;
+    bottom: 0;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+}
+.list li a {
+    color: #fff;
+}
+
+
+
+
+.basic_loader{
+    width: 100%;
+    height: calc(100% )
+
+}
+
+.basic_loader_inner_text{
+    color: black;
+    margin-top: 6%;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+
+}
+
+.basic_loader_inner{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.4
+}
